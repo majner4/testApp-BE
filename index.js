@@ -16,7 +16,7 @@ app.use(cors());
 mongoose.Promise = global.Promise;
 mongoose.connect(
   // process.env.MONGODB_URI ||
-    `mongodb+srv://admin:majny9561@cluster0.tzzvw.mongodb.net/projectDB?retryWrites=true&w=majority`,
+  `mongodb+srv://testAppDb:majny9561@cluster0.dmyw9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
