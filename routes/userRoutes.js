@@ -25,10 +25,10 @@ module.exports = (app) => {
           return res.status(403).send("not admin");
         }
       } catch (e) {
-        return res.status(401).send("unauthorized");
+        return res.status(500).send("internal server error");
       }
     } else {
-      return res.status(500).send("internal server error");
+      return res.status(401).send("unauthorized");
     }
   });
 
@@ -162,10 +162,10 @@ module.exports = (app) => {
           user,
         });
       } catch (e) {
-        return res.status(401).send("unauthorized");
+        return res.status(500).send("internal server error");
       }
     } else {
-      return res.status(500).send("internal server error");
+      return res.status(401).send("unauthorized");
     }
   });
 
@@ -180,10 +180,10 @@ module.exports = (app) => {
         decoded = verifyToken(token);
         return res.status(200).send(decoded);
       } catch (e) {
-        return res.status(401).send("unauthorized");
+        return res.status(500).send("internal server error");
       }
     } else {
-      return res.status(500).send("internal server error");
+      return res.status(401).send("unauthorized");
     }
   });
 
@@ -209,10 +209,10 @@ module.exports = (app) => {
           });
         }
       } catch (e) {
-        return res.status(401).send("unauthorized");
+        return res.status(500).send("internal server error");
       }
     } else {
-      return res.status(500).send("internal server error");
+      return res.status(401).send("unauthorized");
     }
   });
 

@@ -21,10 +21,10 @@ module.exports = (app) => {
 
         return res.status(200).send(userNews);
       } catch (e) {
-        return res.status(401).send("unauthorized");
+        return res.status(500).send("internal server error");
       }
     } else {
-      return res.status(500).send("internal server error");
+      return res.status(401).send("unauthorized");
     }
   });
 
@@ -40,10 +40,10 @@ module.exports = (app) => {
 
         return res.status(200).send(usersNews);
       } catch (e) {
-        return res.status(401).send("unauthorized");
+        return res.status(500).send("internal server error");
       }
     } else {
-      return res.status(500).send("internal server error");
+      return res.status(401).send("unauthorized");
     }
   });
 
@@ -69,10 +69,10 @@ module.exports = (app) => {
           newUserNews,
         });
       } catch (e) {
-        return res.status(401).send("unauthorized");
+        return res.status(500).send("internal server error");
       }
     } else {
-      return res.status(500).send("internal server error");
+      return res.status(401).send("unauthorized");
     }
   });
 
@@ -96,10 +96,10 @@ module.exports = (app) => {
           userNews,
         });
       } catch (e) {
-        return res.status(401).send("unauthorized");
+        return res.status(500).send("internal server error");
       }
     } else {
-      return res.status(500).send("internal server error");
+      return res.status(401).send("unauthorized");
     }
   });
 };
