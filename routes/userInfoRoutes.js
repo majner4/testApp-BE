@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const UserInfo = mongoose.model("users_profile_datas");
 const uploadFile = mongoose.model("user_images");
+const dotenv = require("dotenv");
+dotenv.config({ path: "constants.env" });
 
 const verifyToken = (token) => {
   return jwt.verify(token, process.env.TOKEN_SECRET);
@@ -38,7 +40,7 @@ module.exports = (app) => {
   });
 
   // endpoint for create user info by id
-  app.post(`/api/userInfo/`, async (req, res) => {
+  app.post(`/api/userInfo`, async (req, res) => {
     if (req.headers && req.headers.authorization) {
       let authorization = req.headers.authorization,
         decoded;

@@ -4,6 +4,8 @@ const uploadFileSchema = mongoose.model("user_images");
 const fs = require("fs");
 const path = require("path");
 const formidable = require("formidable");
+const dotenv = require("dotenv");
+dotenv.config({ path: "constants.env" });
 
 const verifyToken = (token) => {
   return jwt.verify(token, process.env.TOKEN_SECRET);

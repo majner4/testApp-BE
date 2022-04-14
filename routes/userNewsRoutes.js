@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const UserNews = mongoose.model("user_news");
+const dotenv = require("dotenv");
+dotenv.config({ path: "constants.env" });
 
 const verifyToken = (token) => {
   return jwt.verify(token, process.env.TOKEN_SECRET);
