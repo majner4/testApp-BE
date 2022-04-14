@@ -3,10 +3,8 @@ const jwt = require("jsonwebtoken");
 const UserInfo = mongoose.model("users_profile_datas");
 const uploadFile = mongoose.model("user_images");
 
-const TOKEN_SECRET = "icoders_secret";
-
 const verifyToken = (token) => {
-  return jwt.verify(token, TOKEN_SECRET);
+  return jwt.verify(token, process.env.TOKEN_SECRET);
 };
 
 module.exports = (app) => {

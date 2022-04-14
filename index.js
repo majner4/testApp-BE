@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const dotenv = require("dotenv");
+dotenv.config({ path: "constants.env" });
 
 require("./models/User");
 require("./models/UserInfo");
@@ -13,17 +15,18 @@ const app = express();
 app.use(cors());
 
 mongoose.Promise = global.Promise;
-mongoose.connect(
-  // process.env.MONGODB_URI ||
-  `mongodb+srv://testAppDb:majny9561@cluster0.dmyw9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
-  { useNewUrlParser: true, useUnifiedTopology: true }
-);
+mongoose.connect(process.env.MONGO_DB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {});
+app.listen(PORT, () => {
+  console.log(`Server running at: http://localhost:${PORT}/`);
+});
 
 require("./routes/userRoutes")(app);
 require("./routes/userInfoRoutes")(app);

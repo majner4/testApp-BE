@@ -2,10 +2,8 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const UserNews = mongoose.model("user_news");
 
-const TOKEN_SECRET = "icoders_secret";
-
 const verifyToken = (token) => {
-  return jwt.verify(token, TOKEN_SECRET);
+  return jwt.verify(token, process.env.TOKEN_SECRET);
 };
 
 module.exports = (app) => {
