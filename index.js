@@ -19,6 +19,8 @@ if (process.env.NODE_ENV !== "production") {
   );
 
   app.use(cors({ origin: "http://localhost:3000", optionsSuccessStatus: 200 }));
+} else {
+  app.use(cors());
 }
 
 mongoose.Promise = global.Promise;
