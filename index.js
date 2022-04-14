@@ -11,8 +11,14 @@ require("./models/UploadFile");
 require("./models/UserNews");
 
 const app = express();
+if (process.env.NODE_ENV !== "production") {
+  app.options(
+    "*",
+    cors({ origin: "http://localhost:3000", optionsSuccessStatus: 200 })
+  );
 
-app.use(cors());
+  app.use(cors({ origin: "http://localhost:3000", optionsSuccessStatus: 200 }));
+}
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGO_DB, {

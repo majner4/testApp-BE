@@ -105,7 +105,7 @@ module.exports = (app) => {
         cretedDate: user.cretedDate,
         password: user.password,
       },
-      TOKEN_SECRET
+      process.env.TOKEN_SECRET
     );
 
     res.header("auth-token", token).json({
