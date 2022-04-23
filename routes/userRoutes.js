@@ -34,7 +34,9 @@ module.exports = (app) => {
 
   // endpoint for register user
   app.post("/api/user/register", async (req, res) => {
-    const isEmailExist = await User.findOne({ email: req.body.email });
+    const { body } = req;
+    const { email, password } = body;
+    const isEmailExist = await User.findOne({ email });
     if (isEmailExist) {
       return res.status(200).send({
         error: true,
@@ -46,10 +48,10 @@ module.exports = (app) => {
       });
     }
     const salt = await bcrypt.genSalt(10);
-    const password = await bcrypt.hash(req.body.password, salt);
+    const hashPassword = await bcrypt.hash(password, salt);
     const user = new User({
-      email: req.body.email,
-      password,
+      email,
+      password: hashPassword,
       role: "user",
     });
     try {

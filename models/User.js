@@ -27,7 +27,7 @@ const userSchema = new Schema(
       default: false,
     },
   },
-  { versionKey: false }
+  { versionKey: false, iat: false }
 );
 
 mongoose.model("users", userSchema);
